@@ -28,7 +28,7 @@
         "label": "Expanding animation duration, in ms (default: 300ms)",
         "type": "string",
         "defaultValue": "300ms"
-    }
+    },
     {
         "property": "mod.autoexpand.animation_delay",
         "label": "Time delay before expanding after hover (default: 500ms)",
