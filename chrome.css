@@ -24,7 +24,20 @@
     }
   }
 
-
+  /*Makes scrolbar clickable*/
+  @media (-moz-bool-pref: "mod.autoexpand.clickable_scroll") {
+    scrollbox:nth-child(5) {
+      scrollbar-width: thin !important;
+    }
+    #navigator-toolbox {
+      -moz-window-dragging: no-drag; /* Disables window dragging */
+    }
+  }
+  @media (-moz-bool-pref: "zen.view.sidebar-expanded") and (-moz-bool-pref: "mod.autoexpand.clickable_scroll") {
+    scrollbox:nth-child(5) {
+      scrollbar-width: auto !important;
+    }
+  }
 
   /*Elements with "Instant" transitions. These are delayed dynamically depending on if it's hover/unhover, and are never animated to improve performance.*/
   #zen-sidebar-foot-buttons > *:not(#zen-workspaces-button), #zen-media-controls-toolbar,
