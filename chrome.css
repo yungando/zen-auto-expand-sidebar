@@ -9,10 +9,10 @@ scrollbox:hover {
 }
 
 :root:not([sizemode="fullscreen"]){
-  --transition-duration: 300ms;
-  --transition-delay: 0ms;
+  --transition-duration: var(--mod-autoexpand-animation_duration);
+  --transition-delay: var(--mod-autoexpand-animation_delay);
   --expanded-tab-bar-width: var(--mod-autoexpand-expanded_width);
-  --collapsed-tab-bar-width: 45px;
+  --collapsed-tab-bar-width: var(--mod-autoexpand-collapsed-width);
 
   /*Hide current workspace*/
   .zen-current-workspace-indicator {
