@@ -1,42 +1,35 @@
-/*makes scrollbar visible in the collapsed state*/
-@media (-moz-bool-pref: "mod.autoexpand.visible_scroll") {
-  scrollbox {
-    width: var(--my-width) !important;
-    transition: width 0ms ease-in-out calc(var(--transition-duration) + 200ms);
-  }
+scrollbox {
+  width: var(--my-width) !important;
+  transition: width 0ms ease-in-out calc(var(--transition-duration) + 200ms);
+}
 
-  scrollbox:hover {
-    width: var(--my-width) !important;
-    transition: width 0ms ease-in-out var(--transition-delay);
-  }
+scrollbox:hover {
+  width: var(--my-width) !important;
+  transition: width 0ms ease-in-out var(--transition-delay);
 }
 
 :root:not([sizemode="fullscreen"]){
-  --transition-duration: var(--mod-autoexpand-animation_duration);
-  --transition-delay: var(--mod-autoexpand-animation_delay);
-  --expanded-tab-bar-width: var(--mod-autoexpand-expanded_width);
-  --collapsed-tab-bar-width: var(--mod-autoexpand-collapsed-width);
+  --transition-duration: 300ms;
+  --transition-delay: 0ms;
+  --expanded-tab-bar-width: 230px;
+  --collapsed-tab-bar-width: 45px;
 
-  /*Hide the workspace button*/
-  @media (-moz-bool-pref: "mod.autoexpand.hide_workspace_indicator") {
-    .zen-current-workspace-indicator {
-      display: none !important;
-    }
+  /*Hide current workspace*/
+  .zen-current-workspace-indicator {
+    //display: none !important;
   }
 
   /*Makes scrolbar clickable*/
-  @media (-moz-bool-pref: "mod.autoexpand.clickable_scroll") {
+  scrollbox:nth-child(5) {
+    scrollbar-width: thin !important;
+  }
+  @media (-moz-bool-pref: "zen.view.sidebar-expanded") {
     scrollbox:nth-child(5) {
-      scrollbar-width: thin !important;
+      scrollbar-width: auto !important;
     }
-    @media (-moz-bool-pref: "zen.view.sidebar-expanded") {
-      scrollbox:nth-child(5) {
-        scrollbar-width: auto !important;
-      }
-    }
-    #navigator-toolbox {
-      -moz-window-dragging: no-drag; /* Disables window dragging */
-    }
+  }
+  #navigator-toolbox {
+    -moz-window-dragging: no-drag; /* Disables window dragging */
   }
 
   /*Elements with "Instant" transitions. These are delayed dynamically depending on if it's hover/unhover, and are never animated to improve performance.*/
