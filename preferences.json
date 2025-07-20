@@ -1,17 +1,5 @@
 [
     {
-        "property": "mod.autoexpand.hide_workspace_indicator",
-        "label": "Hide top workspace indicator",
-        "type": "checkbox",
-        "defaultValue": true
-    },
-    {
-        "property": "mod.autoexpand.visible_scroll",
-        "label": "makes the tabs scroll bar visible in the collapsed state, when you have many tabs open",
-        "type": "checkbox",
-        "defaultValue": true
-    },
-    {
         "property": "mod.autoexpand.collapsed_width",
         "label": "Width of the minimized sidebar",
         "type": "string",
@@ -34,5 +22,23 @@
         "label": "Time delay before expanding after hover (default: 500ms)",
         "type": "string",
         "defaultValue": "500ms"
+    },
+    {
+        "property": "mod.autoexpand.hide_workspace_indicator",
+        "label": "Hide top workspace indicator",
+        "type": "checkbox",
+        "defaultValue": true
+    },
+    {
+        "property": "mod.autoexpand.visible_scroll",
+        "label": "makes the tabs scroll bar visible in the collapsed state, when you have many tabs open",
+        "type": "checkbox",
+        "defaultValue": false
+    },
+    {
+        "property": "mod.autoexpand.clickable_scroll",
+        "label": "makes the tabs scroll bar clickable",
+        "type": "checkbox",
+        "defaultValue": false
     }
 ]
