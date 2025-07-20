@@ -11,7 +11,7 @@ scrollbox:hover {
 :root:not([sizemode="fullscreen"]){
   --transition-duration: 300ms;
   --transition-delay: 0ms;
-  --expanded-tab-bar-width: 230px;
+  --expanded-tab-bar-width: var(--mod-autoexpand-expanded_width);
   --collapsed-tab-bar-width: 45px;
 
   /*Hide current workspace*/
