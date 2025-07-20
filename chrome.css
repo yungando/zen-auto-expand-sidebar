@@ -12,8 +12,8 @@
 }
 
 :root:not([sizemode="fullscreen"]){
-  --transition-duration: var(--mod-autoexpand-animation_duration);
-  --transition-delay: var(--mod-autoexpand-animation_delay);
+  --transition-duration: 200ms;
+  --transition-delay: 0ms;
   --expanded-tab-bar-width: 45px;
   --collapsed-tab-bar-width: 45px;
 
