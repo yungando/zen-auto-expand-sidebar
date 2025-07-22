@@ -16,9 +16,11 @@
   --expanded-tab-bar-width: var(--mod-autoexpand-expanded_width);
   --collapsed-tab-bar-width: var(--mod-autoexpand-collapsed_width);
 
-  /*Hide current workspace*/
-  .zen-current-workspace-indicator {
-    display: none !important;
+  /*Hide top workspace button*/
+   @media (-moz-bool-pref: "mod.autoexpand.hide_workspace_indicator") {
+    .zen-current-workspace-indicator {
+      display: none !important;
+    }
   }
 
   /*Makes scrolbar clickable*/
