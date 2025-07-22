@@ -3,8 +3,9 @@
   --transition-delay: var(--mod-autoexpand-animation_delay);
   --expanded-tab-bar-width: var(--mod-autoexpand-expanded_width);
   --collapsed-tab-bar-width: var(--mod-autoexpand-collapsed-width);
+  #navigator-toolbox{
+    min-width: 100px !important;
+    width: var(--expanded-tab-bar-width) !important;
+  }
 }
-#navigator-toolbox{
-  min-width: 100px !important;
-  width: var(--expanded-tab-bar-width) !important;
-}
+
