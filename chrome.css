@@ -6,5 +6,5 @@
 }
 #navigator-toolbox{
   min-width: 100px !important;
-  width: var(--mod-autoexpand-expanded_width) !important;
+  width: var(--expanded-tab-bar-width) !important;
 }
