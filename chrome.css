@@ -1,11 +1,13 @@
-scrollbox {
-  width: var(--my-width) !important;
-  transition: width 0ms ease-in-out calc(var(--transition-duration) + 200ms);
-}
+@media (-moz-bool-pref: "mod.autoexpand.visible_scroll") {
+  scrollbox {
+    width: var(--my-width) !important;
+    transition: width 0ms ease-in-out calc(var(--transition-duration) + 200ms);
+  }
 
-scrollbox:hover {
-  width: var(--my-width) !important;
-  transition: width 0ms ease-in-out var(--transition-delay);
+  scrollbox:hover {
+    width: var(--my-width) !important;
+    transition: width 0ms ease-in-out var(--transition-delay);
+  }
 }
 
 :root:not([sizemode="fullscreen"]){
