@@ -409,12 +409,12 @@
   }
   #navigator-toolbox:not([zen-right-side="true"]) #zen-workspaces-button {
     order: -1 !important;
-    transform: translateX(calc(var(--collapsed-tab-bar-width)/2 - var(--expanded-tab-bar-width)/2 + 25px));
+    transform: translateX(calc(var(--collapsed-tab-bar-width)/2 - var(--expanded-tab-bar-width)/2 + 26px));
   }
   #navigator-toolbox[zen-right-side="true"] {
     #zen-workspaces-button {
       order: 999 !important;
-      transform: translateX(calc(var(--expanded-tab-bar-width)/2 - var(--collapsed-tab-bar-width)/2 - 25px));
+      transform: translateX(calc(var(--expanded-tab-bar-width)/2 - var(--collapsed-tab-bar-width)/2 - 26px));
     }
     #downloads-button{
       order: 999 !important;
