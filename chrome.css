@@ -53,7 +53,7 @@
   #nav-bar, #tabs-newtab-button .toolbarbutton-text, tab:not([zen-essential]):not([pinned])[selected="true"] .tab-background,
   .tab-audio-button, #zen-media-controls-hbox > *:not(#zen-media-focus-button), #zen-media-main-vbox > *:not(#zen-media-controls-hbox),
   tab:not([zen-essential])[selected="true"] .tab-background, #tabs-newtab-button, .tab-label-container,
-  .vertical-pinned-tabs-container-separator, .zen-current-workspace-indicator-name, .tab-group-label{
+  .vertical-pinned-tabs-container-separator, .zen-current-workspace-indicator-name, .tab-group-label, tab:not([zen-essential]){
     transition: clip-path 0ms ease-in-out var(--transition-delay-fast),
       transform 0ms ease-in-out var(--transition-delay-fast),
       opacity 0ms ease-in-out var(--transition-delay-fast),
@@ -64,7 +64,7 @@
 
   /*Elements with smooth transitions that are animated*/
   #navigator-toolbox, #tabbrowser-tabbox, #urlbar:not([focused]), tab:is([zen-essential]),
-  #zen-workspaces-button, #zen-workspaces-button .subviewbutton, #zen-media-focus-button::after, tab:not([zen-essential]){
+  #zen-workspaces-button, #zen-workspaces-button .subviewbutton, #zen-media-focus-button::after{
     transition: clip-path var(--transition-duration) ease-in-out var(--transition-delay-smooth),
       transform var(--transition-duration) ease-in-out var(--transition-delay-smooth),
       opacity var(--transition-duration) ease-in-out var(--transition-delay-smooth),

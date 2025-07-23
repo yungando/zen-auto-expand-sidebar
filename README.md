@@ -8,6 +8,7 @@ Zen mod to auto expand the sidebar on hover.
 - Get CosmoCreeper's [Sine](https://github.com/CosmoCreeper/Sine)
 - Open sine in the configurations menu and paste the Url of this page to install
 - IMPORTANT: Close and Reopen zen for the mod to properly apply
+- If the tab bar ever gets stuck in the open position, right click anywhere on the tab bar to open a popup menu, and then close it.
 
 ## Options
 
