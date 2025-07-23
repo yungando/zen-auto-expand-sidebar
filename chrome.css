@@ -197,7 +197,9 @@
         opacity: 100% !important;
       }
       tab-group .tabbrowser-tab{
-        transform: translateX(0px)
+        transform: translateX(0px);
+        --tab-width: calc(100% - 15px);
+        width: var(--tab-width) !important;
       }
       .tab-group-label{
         opacity: 100%;
@@ -210,7 +212,7 @@
     opacity: 0%;
   }
   tab-group .tabbrowser-tab{
-    transform: translateX(-15px)
+    transform: translateX(-15px);
   }
 
   #TabsToolbar{
