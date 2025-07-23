@@ -13,6 +13,7 @@
 :root:not([sizemode="fullscreen"]){
   --transition-duration: var(--mod-autoexpand-animation_duration);
   --transition-delay: var(--mod-autoexpand-animation_delay);
+  --transition-delay-after: 100ms;
   --expanded-tab-bar-width: var(--mod-autoexpand-expanded_width);
   --collapsed-tab-bar-width: var(--mod-autoexpand-collapsed_width);
 
@@ -46,23 +47,24 @@
     }
   }
 
-  /*Elements with "Instant" transitions. These are delayed dynamically depending on if it's hover/unhover, and are never animated to improve performance.*/
-  #zen-sidebar-foot-buttons > *:not(#zen-workspaces-button), #zen-media-controls-toolbar,
+/*Elements with "Instant" transitions. These are delayed dynamically depending on if it's hover/unhover, and are never animated to improve performance.*/
+  #zen-sidebar-foot-buttons > *:not(#zen-workspaces-button), #zen-media-controls-toolbar, #zen-appcontent-wrapper,
   vbox.zen-workspace-tabs-section.zen-workspace-pinned-tabs-section,
   #nav-bar, #tabs-newtab-button .toolbarbutton-text, tab:not([zen-essential]):not([pinned])[selected="true"] .tab-background,
   .tab-audio-button, #zen-media-controls-hbox > *:not(#zen-media-focus-button), #zen-media-main-vbox > *:not(#zen-media-controls-hbox),
   tab:not([zen-essential])[selected="true"] .tab-background, #tabs-newtab-button, .tab-label-container,
-  .vertical-pinned-tabs-container-separator, .zen-current-workspace-indicator-name{
+  .vertical-pinned-tabs-container-separator, .zen-current-workspace-indicator-name, .tab-group-label{
     transition: clip-path 0ms ease-in-out var(--transition-delay-fast),
       transform 0ms ease-in-out var(--transition-delay-fast),
       opacity 0ms ease-in-out var(--transition-delay-fast),
       width 0ms ease-in-out var(--transition-delay-fast),
-      max-height 0ms ease var(--transition-delay-fast) !important;
+      max-height 0ms ease var(--transition-delay-fast),
+      z-index 0ms ease var(--transition-delay-fast) !important;
   }
 
   /*Elements with smooth transitions that are animated*/
   #navigator-toolbox, #tabbrowser-tabbox, #urlbar:not([focused]), tab:is([zen-essential]),
-  #zen-workspaces-button, #zen-workspaces-button .subviewbutton, #zen-media-focus-button::after{
+  #zen-workspaces-button, #zen-workspaces-button .subviewbutton, #zen-media-focus-button::after, tab:not([zen-essential]){
     transition: clip-path var(--transition-duration) ease-in-out var(--transition-delay-smooth),
       transform var(--transition-duration) ease-in-out var(--transition-delay-smooth),
       opacity var(--transition-duration) ease-in-out var(--transition-delay-smooth),
@@ -72,11 +74,11 @@
 
   /*Main code block that defines the expanded state (reverts changes of the collapsed state, and clips the viewport)*/
   #navigator-toolbox{
-    --transition-delay-smooth: 0ms;
-    --transition-delay-fast: calc(var(--transition-duration) + 0ms);
+    --transition-delay-smooth: var(--transition-delay-after);
+    --transition-delay-fast: calc(var(--transition-duration) + var(--transition-delay-after));
     ~ #zen-appcontent-wrapper{
-        --transition-delay-smooth: 0ms;
-        --transition-delay-fast: calc(var(--transition-duration) + 0ms);
+        --transition-delay-smooth: var(--transition-delay-after);
+        --transition-delay-fast: calc(var(--transition-duration) + var(--transition-delay-after));
       }
     --my-width: calc(var(--collapsed-tab-bar-width) + 8px);
     --hide: calc(var(--expanded-tab-bar-width) - var(--collapsed-tab-bar-width) - 5px);
@@ -146,13 +148,15 @@
       }
       #zen-workspaces-button {
         order: unset !important;
-        //justify-content: inherit !important;
+        justify-content: center !important;
         transform: translateX(0px);
       }
       #zen-workspaces-button .subviewbutton {
         position: relative !important;
         transform: scale(1);
         opacity: 100% !important;
+        //margin-left: auto! important;
+        //margin-right: auto! important;
       }
       #zen-media-focus-button::after {
         width: 100% !important;
@@ -181,7 +185,7 @@
       }
       tab:not([zen-essential]){
         width: 100%;
-        transition: width 0ms ease-in-out var(--transition-delay) !important;
+        //transition: width 0ms ease-in-out var(--transition-delay) !important;
       }
       .vertical-pinned-tabs-container-separator{
         width: inherit !important;
@@ -192,7 +196,21 @@
       .zen-current-workspace-indicator .zen-current-workspace-indicator-name{
         opacity: 100% !important;
       }
+      tab-group .tabbrowser-tab{
+        transform: translateX(0px)
+      }
+      .tab-group-label{
+        opacity: 100%;
+      }
     }
+  }
+
+  /*support for Advanced tab groups*/
+  #navigator-toolbox .tab-group-label{
+    opacity: 0%;
+  }
+  tab-group .tabbrowser-tab{
+    transform: translateX(-15px)
   }
 
   #TabsToolbar{
@@ -395,7 +413,7 @@
   }
 
   /*Makes so that the selected workspace button is centered in the collapsed state. Moves the download button to the outside edge*/
- #zen-workspaces-button {
+  #zen-workspaces-button {
     justify-content: center !important;
     .subviewbutton:not([active="true"]) {
       opacity: 0% !important;
@@ -427,7 +445,7 @@
   /*Collapses tab for square backgrounds on hover, during collapsed state*/
   tab:not([zen-essential]){
     width: 37px;
-    transition: width 0ms ease-in-out calc(var(--transition-delay) + var(--transition-duration)) !important;
+    //transition: width 0ms ease-in-out calc(var(--transition-delay) + var(--transition-duration)) !important;
   }
 
   /*collapses the thin line separator*/

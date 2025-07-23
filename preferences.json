@@ -31,7 +31,7 @@
     },
     {
         "property": "mod.autoexpand.visible_scroll",
-        "label": "Make the tabs scroll bar visible in the collapsed state, when you have many tabs open",
+        "label": "Make the tabs scroll bar visible in the collapsed state, when you have many tabs open - not compatible with superpins",
         "type": "checkbox",
         "defaultValue": false
     },
