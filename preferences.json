@@ -13,13 +13,13 @@
     },
     {
         "property": "mod.autoexpand.animation_duration",
-        "label": "Expanding animation duration, in ms (default: 300ms)",
+        "label": "Expanding animation duration, in ms (default: 250ms)",
         "type": "string",
         "defaultValue": "250ms"
     },
     {
         "property": "mod.autoexpand.animation_delay",
-        "label": "Time delay before expanding after hover (default: 500ms)",
+        "label": "Delay before expanding after hover (default: 50ms)",
         "type": "string",
         "defaultValue": "50ms"
     },
