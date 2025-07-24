@@ -52,8 +52,9 @@
   vbox.zen-workspace-tabs-section.zen-workspace-pinned-tabs-section,
   #nav-bar, #tabs-newtab-button .toolbarbutton-text, tab:not([zen-essential]):not([pinned])[selected="true"] .tab-background,
   .tab-audio-button, #zen-media-controls-hbox > *:not(#zen-media-focus-button), #zen-media-main-vbox > *:not(#zen-media-controls-hbox),
-  tab:not([zen-essential])[selected="true"] .tab-background, #tabs-newtab-button, .tab-label-container,
-  .vertical-pinned-tabs-container-separator, .zen-current-workspace-indicator-name, .tab-group-label, tab:not([zen-essential]){
+  tab:not([zen-essential]) .tab-background, #tabs-newtab-button, .tab-label-container,
+  .vertical-pinned-tabs-container-separator, .zen-current-workspace-indicator-name, tab:not([zen-essential]),
+    .tab-group-label, #zen-sidebar-top-buttons-customization-target > *{
     transition: clip-path 0ms ease-in-out var(--transition-delay-fast),
       transform 0ms ease-in-out var(--transition-delay-fast),
       opacity 0ms ease-in-out var(--transition-delay-fast),
@@ -196,8 +197,13 @@
       .zen-current-workspace-indicator .zen-current-workspace-indicator-name{
         opacity: 100% !important;
       }
-      tab-group .tabbrowser-tab{
+      &:not([zen-right-side="true"]) tab-group .tabbrowser-tab{
         transform: translateX(0px);
+        --tab-width: calc(100% - 15px);
+        width: var(--tab-width) !important;
+      }
+      &[zen-right-side="true"] tab-group .tabbrowser-tab{
+        transform: translateX(-15px);
         --tab-width: calc(100% - 15px);
         width: var(--tab-width) !important;
       }
@@ -208,11 +214,20 @@
   }
 
   /*support for Advanced tab groups*/
-  #navigator-toolbox .tab-group-label{
-    opacity: 0%;
-  }
-  tab-group .tabbrowser-tab{
-    transform: translateX(-15px);
+  #navigator-toolbox{
+    &:not([zen-right-side="true"]) {
+      .tab-group-label{
+        opacity: 0%;
+      }
+      tab-group .tabbrowser-tab{
+        transform: translateX(-15px);
+      }
+    }
+    &[zen-right-side="true"]{
+      .tab-group-label-container{
+        margin-right: 5px !important;
+      }
+    }
   }
 
   #TabsToolbar{
@@ -273,7 +288,7 @@
       margin-left: 4px !important;
       margin-right: 4px !important;
     }
-    &[selected="true"] .tab-background{
+    .tab-background{
       width: 36px !important;
     }
   }
@@ -365,10 +380,13 @@
       //padding-right: 2px !important;
     }
   }
-  /*adds relief for right-sided tab bar*/
+  /*adds relief for window buttons on a right-sided tab bar, and for the back button on the left tab bar*/
   @media not (-moz-bool-pref: "zen.view.use-single-toolbar") {
     #navigator-toolbox[zen-right-side="true"] ~ #zen-appcontent-wrapper #nav-bar{
       padding-right: 100px !important;
+    }
+    #navigator-toolbox:not([zen-right-side="true"]) ~ #zen-appcontent-wrapper #nav-bar{
+      padding-left: 25px !important;
     }
   }
 
@@ -460,7 +478,7 @@
 
   /*Positions back button to the left (sane layout)*/
   #zen-sidebar-top-buttons-customization-target{
-    margin-left: calc(var(--collapsed-tab-bar-width)/2 - 20px) !important;
+    margin-left: calc(var(--collapsed-tab-bar-width)/2 - 18px) !important;
 
     > :nth-child(1){
       //display: none !important;
@@ -468,8 +486,8 @@
 
     #back-button{
       order: -3 !important;
-      margin-left: 3px !important;
-      margin-right: 10px !important;
+      //margin-left: 3px !important;
+      //margin-right: 10px !important;
     }
     #forward-button{
       order: -2 !important;
@@ -488,6 +506,17 @@
     }
     #PanelUI-button{
       order: 100 !important;
+    }
+  }
+  #navigator-toolbox:not(:is(
+    :hover,
+  [has-popup-menu=""],
+  [movingtab],
+  [flash-popup],
+  :has(toolbarbutton[open="true"]:not(#zen-sidepanel-button), #urlbar[open])
+  )) {
+    #zen-sidebar-top-buttons-customization-target > *:not(#back-button){
+      opacity: 0 !important;
     }
   }
 
@@ -583,7 +612,7 @@
         position: absolute !important;
         opacity: 0% !important;
         clip-path: inset(100% 0 0 0);
-        transition: clip-path 0ms ease-in-out 0ms !important;
+        transition: clip-path 0ms ease-in-out var(--transition-delay-after) !important;
       }
       &:hover .tab-close-button{
         position: relative !important;
