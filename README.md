@@ -1,5 +1,5 @@
 # Zen-Auto-Expand-Sidebar
-![](./Auto-Expand-Banner.png)
+![](./image.png)
 
 Zen mod to auto expand the sidebar on hover.
 
@@ -17,4 +17,4 @@ Zen mod to auto expand the sidebar on hover.
 - Hide or show the workspace indicator
 - Show the tabs scroll bar in the collapsed state
 - Automatically reorder Essential tabs to keep displaying of the active tab
-![](./Autoexpand_Options.png)
+![](./autoexpand_options_image.png)
