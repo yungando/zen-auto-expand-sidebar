@@ -49,9 +49,9 @@
 
   /*Elements with "Instant" transitions. These are delayed dynamically depending on if it's hover/unhover, and are never animated to improve performance.*/
   &:has(#theme-zen-auto-expand-sidebar[mod-autoexpand-performance-mode="fancy"]) {
-    #zen-sidebar-foot-buttons > *:not(#zen-workspaces-button), #zen-media-controls-toolbar, #zen-appcontent-wrapper,
+    #zen-media-controls-toolbar, #zen-appcontent-wrapper,
     vbox.zen-workspace-tabs-section.zen-workspace-pinned-tabs-section,
-    #nav-bar, #tabs-newtab-button .toolbarbutton-text, tab:not([zen-essential]):not([pinned])[selected="true"] .tab-background,
+    #nav-bar, tab:not([zen-essential]):not([pinned])[selected="true"] .tab-background,
     .tab-audio-button, #zen-media-controls-hbox > *:not(#zen-media-focus-button), #zen-media-main-vbox > *:not(#zen-media-controls-hbox),
     tab:not([zen-essential]) .tab-background, #tabs-newtab-button,
     .vertical-pinned-tabs-container-separator, .zen-current-workspace-indicator-name,
@@ -66,8 +66,9 @@
 
     /*Elements with smooth transitions that are animated*/
     #navigator-toolbox, #tabbrowser-tabbox, #urlbar:not([focused]), tab:is([zen-essential]),
-    #zen-workspaces-button, #zen-workspaces-button .subviewbutton,
-    #zen-media-focus-button::after, tab:not([zen-essential]), .tab-label-container{
+    #zen-workspaces-button, #zen-workspaces-button .subviewbutton, #tabs-newtab-button .toolbarbutton-text,
+    #zen-media-focus-button::after, tab:not([zen-essential]), .tab-label-container,
+    #zen-sidebar-foot-buttons > *:not(#zen-workspaces-button){
       transition: clip-path var(--transition-duration) ease-in-out var(--transition-delay-smooth),
         transform var(--transition-duration) ease-in-out var(--transition-delay-smooth),
         opacity var(--transition-duration) ease-in-out var(--transition-delay-smooth),
