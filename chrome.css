@@ -148,15 +148,12 @@
       right: 0 !important;
       clip-path: inset(0 0 0 var(--hide));
     }
-
-    //clip-path: inset(0 var(--hide) 0 0);
     position: absolute !important; //Removes it from the normal document flow, and needs the height adjustment
     z-index: -1 !important;
     height: 100%;
     min-width: 100px !important;
     width: var(--expanded-tab-bar-width) !important;
     --hover-width: 100px;
-    //overflow: hidden;
 
     /*Expanded state. Activates on hover, popup menu, etc*/
     &:is(:hover, [has-popup-menu=""], [movingtab], [flash-popup]), &:has(toolbarbutton[open="true"]:not(#zen-sidepanel-button), #urlbar[open]) {
@@ -176,9 +173,6 @@
       }
       &[zen-right-side="true"] ~ #zen-appcontent-wrapper #tabbrowser-tabbox {
         clip-path: inset(-2px calc(var(--expanded-tab-bar-width) - var(--collapsed-tab-bar-width)) -2px -2px round 10px);
-      }
-      ~ #zen-appcontent-wrapper #zen-tabbox-wrapper {
-        //box-shadow: 15px 0px 15px rgba(0, 0, 0, 0);
       }
       tab:not([zen-essential], [pinned]) .tab-background{
         //width: 100% !important; //superpins
@@ -202,7 +196,6 @@
         opacity: 100% !important;
       }
       #zen-sidebar-foot-buttons > *:not(#zen-workspaces-button){
-        //display: flex !important;
         opacity: 100% !important;
       }
       #zen-workspaces-button {
@@ -213,8 +206,6 @@
         position: relative !important;
         transform: scale(1);
         opacity: 100% !important;
-        //margin-left: auto! important;
-        //margin-right: auto! important;
       }
       #zen-media-focus-button::after {
         width: 100% !important;
@@ -228,10 +219,6 @@
       vbox.zen-workspace-tabs-section.zen-workspace-pinned-tabs-section {
         transform: translateX(0px) !important;
       }
-      tab:is([zen-essential], [pinned]):is([selected]){
-        //order: 0 !important; // Move it to the front without breaking layout
-        //grid-column: 1 !important;
-      }
       .toolbarbutton-text{
         opacity: 100% !important;
       }
@@ -243,7 +230,6 @@
       }
       tab:not([zen-essential]){
         width: 100%;
-        //transition: width 0ms ease-in-out var(--transition-delay) !important;
       }
       .vertical-pinned-tabs-container-separator{
         width: inherit !important;
@@ -287,11 +273,6 @@
     }
   }
 
-  #TabsToolbar{
-    //min-width: 100px !important;
-    //width: 230px !important;
-  }
-
   /*Important: Makes so that the webpage display covers the tab bar*/
   #zen-appcontent-wrapper{
     z-index: 1000 !important;
@@ -300,7 +281,6 @@
 
   /*Adds dynamic drop shadow to this element that parents tabbrowser-tabbox so the shadow follows the web page with the clip path*/
   #zen-tabbox-wrapper {
-    //box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5);
     filter: drop-shadow(0px 0px 6px rgba(0, 0, 0, 0.5));
   }
 
@@ -319,7 +299,6 @@
 
   /*Inverts elements if the tab bar is right-sided. Done this way because translating the whole navigator-toolbox makees the clip path laggy*/
   #navigator-toolbox[zen-right-side="true"] .zen-essentials-container{
-    //direction: rtl !important;
     justify-items: end;
   }
   #navigator-toolbox[zen-right-side="true"] .workspace-arrowscrollbox {
@@ -417,13 +396,6 @@
     display: flex !important;
   }
 
-  /*Resizes essentials buttons*/
-  .zen-essentials-container{
-    //margin-top:5px;
-    grid-template-rows: repeat(auto-fit, minmax(50px, 1fr)) !important;
-    grid-template-columns: repeat(auto-fit, minmax(70px, 1fr)) !important;
-  }
-
   /*fades audio button*/
   .tab-audio-button{
     opacity: 0% !important;
@@ -433,8 +405,6 @@
   @media (-moz-bool-pref: "zen.view.use-single-toolbar") {
     #nav-bar{
       position: relative !important;
-      //width: 40px !important;
-      //padding-right: 2px !important;
     }
   }
   /*adds relief for window buttons on a right-sided tab bar, and for the back button on the left tab bar*/
@@ -462,7 +432,6 @@
 
   /*aligns pinned tab favicons*/
   #navigator-toolbox:not([zen-right-side="true"]) vbox.zen-workspace-tabs-section.zen-workspace-pinned-tabs-section {
-    //transform: translateX(-6px) !important;
     margin: 0 !important;
   }
   #navigator-toolbox[zen-right-side="true"] vbox.zen-workspace-tabs-section.zen-workspace-pinned-tabs-section {
@@ -496,7 +465,6 @@
       opacity: 0% !important;
     }
     .subviewbutton[active="true"]{
-      //margin-right: auto !important;
       transform: scale(1.5);
       transform-origin: center;
       position: absolute !important;
@@ -535,14 +503,8 @@
   #zen-sidebar-top-buttons-customization-target{
     margin-left: calc(var(--collapsed-tab-bar-width)/2 - 18px) !important;
 
-    > :nth-child(1){
-      //display: none !important;
-    }
-
     #back-button{
       order: -3 !important;
-      //margin-left: 3px !important;
-      //margin-right: 10px !important;
     }
     #forward-button{
       order: -2 !important;
