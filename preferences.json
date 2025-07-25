@@ -1,5 +1,25 @@
 [
     {
+      "property": "mod-autoexpand-performance-mode",
+      "label": "Performance Setting",
+      "type": "dropdown",
+      "defaultValue": "balanced",
+      "options": [
+        {
+          "label": "Fancy",
+          "value": "fancy"
+        },
+        {
+          "label": "Balanced",
+          "value": "balanced"
+        },
+        {
+          "label": "Potato",
+          "value": "potato"
+        }
+      ]
+    },
+    {
         "property": "mod.autoexpand.collapsed_width",
         "label": "Width of the minimized sidebar",
         "type": "string",
