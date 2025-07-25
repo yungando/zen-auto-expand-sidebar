@@ -521,7 +521,7 @@
 
   /*Collapses tab for square backgrounds on hover, during collapsed state*/
   tab:not([zen-essential]){
-    width: 37px;
+    //width: 37px;
     //transition: width 0ms ease-in-out calc(var(--transition-delay) + var(--transition-duration)) !important;
   }
 
