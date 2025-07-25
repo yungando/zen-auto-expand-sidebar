@@ -44,6 +44,12 @@
         "defaultValue": "50ms"
     },
     {
+        "property": "mod.autoexpand.collapse_delay",
+        "label": "Delay before collapsing (default: 100ms)",
+        "type": "string",
+        "defaultValue": "100ms"
+    },
+    {
         "property": "mod.autoexpand.hide_workspace_indicator",
         "label": "Hide top workspace indicator",
         "type": "checkbox",
