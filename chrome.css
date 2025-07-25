@@ -677,6 +677,9 @@
         position: relative !important;
         opacity: 100% !important;
       }
+      &[pinned]:not([pending="true"]) .tab-close-button{
+        display: none !important;
+      }
     }
   }
 }
