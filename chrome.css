@@ -206,7 +206,6 @@
         opacity: 100% !important;
       }
       #zen-workspaces-button {
-        order: unset !important;
         justify-content: center !important;
         transform: translateX(0px);
       }
@@ -482,7 +481,7 @@
   }
 
   #zen-sidebar-foot-buttons > *:not(#zen-workspaces-button){
-    //opacity: 0% !important;
+    opacity: 0% !important;
   }
 
   /*removes gap in the foot buttons*/
@@ -504,13 +503,11 @@
     }
   }
   #navigator-toolbox:not([zen-right-side="true"]) #zen-workspaces-button {
-    order: -1 !important;
-    transform: translateX(calc(var(--collapsed-tab-bar-width)/2 - var(--expanded-tab-bar-width)/2 + 26px));
+    transform: translateX(calc(var(--collapsed-tab-bar-width)/2 - var(--expanded-tab-bar-width)/2 + 0px));
   }
   #navigator-toolbox[zen-right-side="true"] {
     #zen-workspaces-button {
-      order: 999 !important;
-      transform: translateX(calc(var(--expanded-tab-bar-width)/2 - var(--collapsed-tab-bar-width)/2 - 26px));
+      transform: translateX(calc(var(--expanded-tab-bar-width)/2 - var(--collapsed-tab-bar-width)/2 - 0px));
     }
     #downloads-button{
       order: 999 !important;
