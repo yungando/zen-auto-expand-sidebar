@@ -50,6 +50,12 @@
         "defaultValue": "100ms"
     },
     {
+        "property": "mod.autoexpand.fade_sleeping_tabs",
+        "label": "Fade Unloaded (Sleeping) Tabs",
+        "type": "checkbox",
+        "defaultValue": true
+    },
+    {
         "property": "mod.autoexpand.hide_workspace_indicator",
         "label": "Hide top workspace indicator",
         "type": "checkbox",

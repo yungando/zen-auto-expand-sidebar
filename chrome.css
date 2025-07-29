@@ -47,6 +47,14 @@
     }
   }
 
+  /*fades sleeping tabs*/
+  @media (-moz-bool-pref: "mod.autoexpand.fade_sleeping_tabs") {
+    .tabbrowser-tab[pending="true"]:not([zen-essential]) {
+      filter: grayscale(0.5) !important;
+      opacity: 0.5 !important;
+    }
+  }
+
   /*Elements with "Instant" transitions. These are delayed dynamically depending on if it's hover/unhover, and are never animated to improve performance.*/
   &:has(#theme-zen-auto-expand-sidebar[mod-autoexpand-performance-mode="fancy"]) {
     #zen-media-controls-toolbar, #zen-appcontent-wrapper,
