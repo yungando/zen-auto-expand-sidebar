@@ -20,38 +20,38 @@
       ]
     },
     {
+        "property": "mod.autoexpand.expanded_width",
+        "label": "Width of the expanded sidebar (use 320px minimum if using tabs on the right)",
+        "type": "string",
+        "defaultValue": "320px"
+    },
+    {
         "property": "mod.autoexpand.collapsed_width",
-        "label": "Width of the minimized sidebar",
+        "label": "Width of the minimized sidebar (default 45px)",
         "type": "string",
         "defaultValue": "45px"
     },
     {
-        "property": "mod.autoexpand.expanded_width",
-        "label": "Width of the expanded sidebar",
-        "type": "string",
-        "defaultValue": "250px"
-    },
-    {
         "property": "mod.autoexpand.animation_duration",
-        "label": "Expanding animation duration, in ms (default: 250ms)",
+        "label": "Expanding animation duration, in ms (default: 200ms)",
         "type": "string",
-        "defaultValue": "250ms"
+        "defaultValue": "200ms"
     },
     {
         "property": "mod.autoexpand.animation_delay",
-        "label": "Delay before expanding after hover (default: 50ms)",
+        "label": "Delay before expanding after hover (default: 300ms)",
         "type": "string",
-        "defaultValue": "50ms"
+        "defaultValue": "300ms"
     },
     {
         "property": "mod.autoexpand.collapse_delay",
-        "label": "Delay before collapsing (default: 100ms)",
+        "label": "Delay before collapsing (default: 200ms)",
         "type": "string",
-        "defaultValue": "100ms"
+        "defaultValue": "200ms"
     },
     {
         "property": "mod.autoexpand.fade_sleeping_tabs",
-        "label": "Fade Unloaded (Sleeping) Tabs",
+        "label": "Slightly fade Unloaded (Sleeping) Tabs",
         "type": "checkbox",
         "defaultValue": true
     },
