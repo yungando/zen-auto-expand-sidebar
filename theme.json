@@ -1,17 +1,13 @@
 {
-    "id": "auto-expand-sidebar",
-    "name": "auto-expand-sidebar",
-    "description": "Expand the sidebar on hover, with many configurations avaliable",
-    "homepage": "https://github.com/StormAnon/zen-auto-expand-sidebar",
-    "style": "https://raw.githubusercontent.com/StormAnon/zen-auto-expand-sidebar/main/chrome.css",
-    "readme": "https://raw.githubusercontent.com/StormAnon/zen-auto-expand-sidebar/main/README.md",
-    "image": "https://raw.githubusercontent.com/StormAnon/zen-auto-expand-sidebar/main/image.png",
-    "preferences": "https://raw.githubusercontent.com/StormAnon/zen-auto-expand-sidebar/main/preferences.json",
-    "author": "StormAnon",
-    "version": "1.0.0",
-    "fork": ["Zen"],
-    "tags": [
-        "ui",
-        "customization"
-    ]
+  "id": "b4ce312a-5e6a-4168-a358-30b218a4ea0e",
+  "name": "zen-auto-expand-sidebar",
+  "description": "Expand the sidebar on hover, with many configurations avaliable",
+  "homepage": "https://github.com/StormAnon/zen-auto-expand-sidebar",
+  "style": "https://raw.githubusercontent.com/yungando/zen-auto-expand-sidebar/main/chrome.css",
+  "readme": "https://raw.githubusercontent.com/yungando/zen-auto-expand-sidebar/main/README.md",
+  "preferences": "https://raw.githubusercontent.com/yungando/zen-auto-expand-sidebar/main/preferences.json",
+  "author": "StormAnon",
+  "version": "1.0.0",
+  "fork": ["Zen"],
+  "tags": ["ui", "customization"]
 }
