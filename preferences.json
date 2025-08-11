@@ -1,31 +1,5 @@
 [
   {
-    "property": "mod.autoexpand.performance_mode",
-    "label": "Performance Setting",
-    "type": "dropdown",
-    "defaultValue": "balanced",
-    "options": [
-      {
-        "label": "Fancy",
-        "value": "fancy"
-      },
-      {
-        "label": "Balanced",
-        "value": "balanced"
-      },
-      {
-        "label": "Potato",
-        "value": "potato"
-      }
-    ]
-  },
-  {
-    "property": "mod.autoexpand.expanded_width",
-    "label": "Width of the expanded sidebar (use 320px minimum if using tabs on the right)",
-    "type": "string",
-    "defaultValue": "320px"
-  },
-  {
     "property": "mod.autoexpand.collapsed_width",
     "label": "Width of the minimized sidebar (default 45px)",
     "type": "string",
@@ -48,29 +22,5 @@
     "label": "Delay before collapsing (default: 200ms)",
     "type": "string",
     "defaultValue": "200ms"
-  },
-  {
-    "property": "mod.autoexpand.fade_sleeping_tabs",
-    "label": "Slightly fade Unloaded (Sleeping) Tabs",
-    "type": "checkbox",
-    "defaultValue": true
-  },
-  {
-    "property": "mod.autoexpand.hide_workspace_indicator",
-    "label": "Hide top workspace indicator",
-    "type": "checkbox",
-    "defaultValue": true
-  },
-  {
-    "property": "mod.autoexpand.visible_scroll",
-    "label": "Make the tabs scroll bar visible in the collapsed state, when you have many tabs open - not compatible with superpins",
-    "type": "checkbox",
-    "defaultValue": false
-  },
-  {
-    "property": "mod.autoexpand.essential_align",
-    "label": "Make the selected essential tab be placed in the first position, visible when collapsed",
-    "type": "checkbox",
-    "defaultValue": false
   }
 ]
