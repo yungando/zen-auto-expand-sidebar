@@ -130,26 +130,7 @@
         opacity: 100% !important;
       }
 
-      #zen-sidebar-foot-buttons>*:not(#zen-workspaces-button) {
-        opacity: 100% !important;
-      }
-
-      #zen-workspaces-button {
-        justify-content: center !important;
-        transform: translateX(0px);
-      }
-
-      #zen-workspaces-button .subviewbutton {
-        position: relative !important;
-        transform: scale(1);
-        opacity: 100% !important;
-      }
-
-      #zen-media-focus-button::after {
-        width: 100% !important;
-      }
-
-      .tab-audio-button {
+      #zen-sidebar-foot-buttons {
         opacity: 100% !important;
       }
 
@@ -159,10 +140,6 @@
 
       .toolbarbutton-text {
         opacity: 100% !important;
-      }
-
-      #tabs-newtab-button {
-        width: 100% !important;
       }
 
       #urlbar:not([open]),
@@ -179,10 +156,6 @@
         margin-inline: inherit !important;
         display: block !important;
         justify-self: inherit !important;
-      }
-
-      .zen-current-workspace-indicator .zen-current-workspace-indicator-name {
-        opacity: 100% !important;
       }
 
       tab-group .tabbrowser-tab {
@@ -241,16 +214,6 @@
     }
   }
 
-  /*Center top workspace icon and fade workspace name*/
-  .zen-current-workspace-indicator {
-    padding-left: calc(var(--collapsed-tab-bar-width)/2 - 6px) !important;
-    padding-right: calc(var(--collapsed-tab-bar-width)/2 - 12px) !important;
-
-    .zen-current-workspace-indicator-name {
-      opacity: 0% !important;
-    }
-  }
-
   /*hide splitter*/
   #zen-sidebar-splitter {
     visibility: hidden !important;
@@ -297,32 +260,8 @@
     opacity: 0% !important;
   }
 
-  #zen-sidebar-foot-buttons>*:not(#zen-workspaces-button) {
+  #zen-sidebar-foot-buttons>toolbaritem:not(:first-of-type) {
     opacity: 0% !important;
-  }
-
-  /*removes gap in the foot buttons*/
-  #zen-sidebar-foot-buttons {
-    gap: 0 !important;
-  }
-
-  /*Makes so that the selected workspace button is centered in the collapsed state. Moves the download button to the outside edge*/
-  #zen-workspaces-button {
-    justify-content: center !important;
-
-    .subviewbutton:not([active="true"]) {
-      opacity: 0% !important;
-    }
-
-    .subviewbutton[active="true"] {
-      transform: scale(1.6);
-      transform-origin: center;
-      position: absolute !important;
-    }
-  }
-
-  #navigator-toolbox:not([zen-right-side="true"]) #zen-workspaces-button {
-    transform: translateX(calc(var(--collapsed-tab-bar-width)/2 - var(--expanded-tab-bar-width)/2 + 0px));
   }
 
   /*Collapses tab for square backgrounds on hover, during collapsed state*/
