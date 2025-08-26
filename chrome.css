@@ -27,11 +27,11 @@
 }
 
 :root:not([zen-compact-mode="true"]):not([chromehidden~="toolbar"]):not([inDOMFullscreen="true"]) {
-  --transition-duration: var(--mod-autoexpand-animation_duration);
-  --transition-delay: var(--mod-autoexpand-animation_delay);
-  --transition-delay-after: var(--mod-autoexpand-collapse_delay);
-  --expanded-tab-bar-width: var(--mod-autoexpand-expanded_width);
-  --collapsed-tab-bar-width: var(--mod-autoexpand-collapsed_width);
+  --transition-duration: var(--mod-autoexpand-animation-duration);
+  --transition-delay: var(--mod-autoexpand-animation-delay);
+  --transition-delay-after: var(--mod-autoexpand-collapse-delay);
+  --expanded-tab-bar-width: var(--mod-autoexpand-expanded-width);
+  --collapsed-tab-bar-width: var(--mod-autoexpand-collapsed-width);
   --transition-delay-smooth: var(--transition-delay-after);
   --transition-delay-fast: calc(var(--transition-duration) + var(--transition-delay-after));
 
@@ -158,11 +158,39 @@
         opacity: 100%;
       }
     }
+
+    #zen-sidebar-foot-buttons>#customizationui-widget-panel {
+      transition: none !important;
+      transform: none !important;
+      clip-path: none !important;
+    }
   }
 
   /*Important: Makes so that the webpage display covers the tab bar*/
   #zen-appcontent-wrapper {
     z-index: 1000 !important;
+  }
+
+  .titlebar-buttonbox-container {
+    display: none !important;
+  }
+
+  #zen-sidebar-foot-buttons>:first-child {
+    margin-inline-start: 5px !important;
+  }
+
+  #zen-sidebar-foot-buttons {
+    margin-bottom: 4px !important;
+  }
+
+  .tab-reset-pin-button,
+  .tab-reset-pin-button:after {
+    display: none !important;
+  }
+
+  .tabbrowser-tab.tabbrowser-tab[zen-pinned-changed][pinned] .tab-icon-stack.tab-icon-stack {
+    position: static !important;
+    transform: none !important;
   }
 
   /*Adds dynamic drop shadow to this element that parents tabbrowser-tabbox so the shadow follows the web page with the clip path*/
@@ -242,10 +270,6 @@
   .tab-label-container {
     opacity: 0% !important;
   }
-
-  /*   #zen-sidebar-foot-buttons > toolbaritem:not(:first-of-type) {
-    opacity: 0% !important;
-  } */
 
   /*Collapses tab for square backgrounds on hover, during collapsed state*/
   tab:not([zen-essential]) {
