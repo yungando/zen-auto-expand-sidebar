@@ -1,26 +1,32 @@
 [
   {
-    "property": "mod.autoexpand.collapsed_width",
-    "label": "Width of the minimized sidebar (default 45px)",
+    "property": "mod.autoexpand.expanded-width",
+    "label": "Expanded sidebar width. (Default: 200px)",
+    "type": "string",
+    "defaultValue": "200px"
+  },
+  {
+    "property": "mod.autoexpand.collapsed-width",
+    "label": "Collapsed sidebar width. (Default: 45px)",
     "type": "string",
     "defaultValue": "45px"
   },
   {
-    "property": "mod.autoexpand.animation_duration",
-    "label": "Expanding animation duration, in ms (default: 200ms)",
+    "property": "mod.autoexpand.animation-duration",
+    "label": "Siderbar expanding animation duration. (Default: 150ms)",
     "type": "string",
-    "defaultValue": "200ms"
+    "defaultValue": "150ms"
   },
   {
-    "property": "mod.autoexpand.animation_delay",
-    "label": "Delay before expanding after hover (default: 300ms)",
+    "property": "mod.autoexpand.animation-delay",
+    "label": "Hover delay before sidebar expands. (Default: 750ms)",
     "type": "string",
-    "defaultValue": "300ms"
+    "defaultValue": "750ms"
   },
   {
-    "property": "mod.autoexpand.collapse_delay",
-    "label": "Delay before collapsing (default: 200ms)",
+    "property": "mod.autoexpand.collapse-delay",
+    "label": "Delay before sidebar collapses. (Default: 100ms)",
     "type": "string",
-    "defaultValue": "200ms"
+    "defaultValue": "100ms"
   }
 ]
