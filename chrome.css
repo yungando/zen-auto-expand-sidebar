@@ -63,6 +63,8 @@
   #tabbrowser-tabbox,
   #urlbar:not([open]),
   #urlbar-container,
+  #nav-bar-customization-target,
+  #identity-box,
   tab:is([zen-essential]),
   #zen-workspaces-button,
   #zen-workspaces-button .subviewbutton,
@@ -112,10 +114,6 @@
         width: 100% !important;
       }
 
-      #nav-bar {
-        width: 100% !important;
-      }
-
       .tab-label-container {
         opacity: 100% !important;
       }
@@ -133,8 +131,13 @@
       }
 
       #urlbar:not([open]),
-      #urlbar-container {
-        clip-path: inset(0 0 0 0 round 10px) !important;
+      #urlbar-container,
+      #nav-bar-customization-target {
+        width: calc(var(--expanded-tab-bar-width) - 8px) !important;
+      }
+
+      #identity-box {
+        visibility: visible !important;
       }
 
       tab:not([zen-essential]) {
@@ -175,11 +178,9 @@
     display: none !important;
   }
 
-  #zen-sidebar-foot-buttons>:first-child {
-    margin-inline-start: 5px !important;
-  }
-
   #zen-sidebar-foot-buttons {
+    padding-left: 3px !important;
+    padding-right: 3px !important;
     margin-bottom: 4px !important;
   }
 
@@ -234,26 +235,20 @@
     visibility: hidden !important;
   }
 
-  /*Puts the url bar in the right place for the single toolbar mode, since we changed navigator-toolbox to position: absolute*/
-  @media (-moz-bool-pref: "zen.view.use-single-toolbar") {
-    #nav-bar {
-      position: relative !important;
-    }
-  }
-
-  /*adds relief for window buttons on a right-sided tab bar, and for the back button on the left tab bar*/
-  @media not all and (-moz-bool-pref: "zen.view.use-single-toolbar") {
-    #zen-main-app-wrapper[zen-compact-mode="false"] {
-      #navigator-toolbox:not([zen-right-side="true"])~#zen-appcontent-wrapper #nav-bar {
-        padding-left: 25px !important;
-      }
-    }
+  #nav-bar {
+    position: relative !important;
   }
 
   /*collapses url bar when not hovered*/
-  #navigator-toolbox #urlbar:not([open]),
-  #urlbar-container {
-    clip-path: inset(0 calc(var(--expanded-tab-bar-width) - var(--collapsed-tab-bar-width) + 1px) 0 0 round 10px) !important;
+  #urlbar:not([open]),
+  #urlbar-container,
+  #nav-bar-customization-target {
+    width: calc(var(--collapsed-tab-bar-width) - 7px) !important;
+    overflow: hidden !important;
+  }
+
+  #identity-box {
+    visibility: hidden !important;
   }
 
   /*collapses essentials when not hovered*/
@@ -302,38 +297,6 @@
 
     .workspace-arrowscrollbox {
       margin-right: auto !important;
-    }
-  }
-
-  /*Reworks the tab close button on the left side, preventing accidental clicks during the collapsed state*/
-  #navigator-toolbox {
-    &:hover .tabbrowser-tab .tab-close-button {
-      clip-path: inset(0 0 0 0);
-      transition: clip-path 0ms ease-in-out calc(var(--transition-delay) + var(--transition-duration)) !important;
-    }
-
-    tab:not([zen-essential]) {
-      .tab-close-button {
-        display: flex !important;
-        position: absolute !important;
-        opacity: 0% !important;
-        clip-path: inset(100% 0 0 0);
-        transition: clip-path 0ms ease-in-out var(--transition-delay-after) !important;
-      }
-
-      &:hover .tab-close-button {
-        position: relative !important;
-        opacity: 100% !important;
-      }
-
-      &[selected="true"] .tab-close-button {
-        position: relative !important;
-        opacity: 100% !important;
-      }
-
-      &[pinned]:not([pending="true"]) .tab-close-button {
-        display: none !important;
-      }
     }
   }
 }
