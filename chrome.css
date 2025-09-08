@@ -136,10 +136,6 @@
         width: calc(var(--expanded-tab-bar-width) - 8px) !important;
       }
 
-      #identity-box {
-        visibility: visible !important;
-      }
-
       tab:not([zen-essential]) {
         width: 100%;
       }
@@ -247,8 +243,8 @@
     overflow: hidden !important;
   }
 
-  #identity-box {
-    visibility: hidden !important;
+  #urlbar:not([open]) #identity-box {
+    display: none !important;
   }
 
   /*collapses essentials when not hovered*/
