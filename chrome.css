@@ -243,8 +243,12 @@
     overflow: hidden !important;
   }
 
-  #urlbar:not([open]) #identity-box {
-    display: none !important;
+  #urlbar:not([open]) {
+
+    #identity-box,
+    #page-action-buttons {
+      display: none !important;
+    }
   }
 
   /*collapses essentials when not hovered*/
