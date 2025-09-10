@@ -217,13 +217,20 @@
     }
   }
 
-  .zen-workspace-normal-tabs-section,
-  .zen-workspace-pinned-tabs-section {
-    padding-left: calc((var(--collapsed-tab-bar-width) - 36px)/2) !important;
+  @media (-moz-platform: macos) {
+
+    .zen-workspace-normal-tabs-section,
+    .zen-workspace-pinned-tabs-section {
+      padding-left: calc((var(--collapsed-tab-bar-width) - 34px)/2) !important;
+    }
   }
 
-  tab:not([zen-essential]) .tab-icon-image {
-    margin-right: 9px !important;
+  @media not (-moz-platform: macos) {
+
+    .zen-workspace-normal-tabs-section,
+    .zen-workspace-pinned-tabs-section {
+      padding-left: calc((var(--collapsed-tab-bar-width) - 36px)/2) !important;
+    }
   }
 
   /*hide splitter*/
@@ -254,11 +261,6 @@
   /*collapses essentials when not hovered*/
   tab:is([zen-essential]) {
     width: calc(var(--collapsed-tab-bar-width) - 5px) !important;
-  }
-
-  /*aligns pinned tab favicons*/
-  #navigator-toolbox vbox.zen-workspace-tabs-section.zen-workspace-pinned-tabs-section {
-    margin: 0 !important;
   }
 
   /*fades tab text*/
