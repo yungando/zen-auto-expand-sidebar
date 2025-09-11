@@ -233,6 +233,10 @@
     }
   }
 
+  tab:not([zen-essential]) .tab-icon-image {
+    margin-right: 9px !important;
+  }
+
   /*hide splitter*/
   #zen-sidebar-splitter {
     visibility: hidden !important;
