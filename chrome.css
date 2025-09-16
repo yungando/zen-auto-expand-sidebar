@@ -1,6 +1,4 @@
 #zen-sidebar-top-buttons-customization-target {
-  margin-left: calc(var(--collapsed-tab-bar-width)/2 - 18px) !important;
-
   #back-button {
     order: -3 !important;
   }
@@ -35,6 +33,13 @@
   --transition-delay-smooth: var(--transition-delay-after);
   --transition-delay-fast: calc(var(--transition-duration) + var(--transition-delay-after));
 
+  --smooth-transition: clip-path 0ms ease-in-out var(--transition-delay-fast),
+    transform 0ms ease-in-out var(--transition-delay-fast),
+    opacity 0ms ease-in-out var(--transition-delay-fast),
+    width 0ms ease-in-out var(--transition-delay-fast),
+    max-height 0ms ease var(--transition-delay-fast),
+    z-index 0ms ease var(--transition-delay-fast) !important;
+
   /*Elements with "Instant" transitions. These are delayed dynamically depending on if it's hover/unhover, and are never animated to improve performance.*/
   #zen-media-controls-toolbar,
   #zen-appcontent-wrapper,
@@ -48,14 +53,8 @@
   #tabs-newtab-button,
   .pinned-tabs-container-separator,
   .zen-current-workspace-indicator-name,
-  .tab-group-label,
-  #zen-sidebar-top-buttons-customization-target>* {
-    transition: clip-path 0ms ease-in-out var(--transition-delay-fast),
-      transform 0ms ease-in-out var(--transition-delay-fast),
-      opacity 0ms ease-in-out var(--transition-delay-fast),
-      width 0ms ease-in-out var(--transition-delay-fast),
-      max-height 0ms ease var(--transition-delay-fast),
-      z-index 0ms ease var(--transition-delay-fast) !important;
+  .tab-group-label {
+    transition: var(--smooth-transition);
   }
 
   /*Elements with smooth transitions that are animated*/
@@ -165,13 +164,17 @@
     }
   }
 
+  #zen-sidebar-top-buttons-customization-target {
+    margin-left: calc(var(--collapsed-tab-bar-width)/2 - 17px) !important;
+
+    #stop-reload-button:has(> #stop-button:not([disabled])) {
+      order: -4 !important;
+    }
+  }
+
   /*Important: Makes so that the webpage display covers the tab bar*/
   #zen-appcontent-wrapper {
     z-index: 1000 !important;
-  }
-
-  .titlebar-buttonbox-container {
-    display: none !important;
   }
 
   #zen-sidebar-foot-buttons {
@@ -290,8 +293,29 @@
       [movingtab],
       [flash-popup],
       :has(toolbarbutton[open="true"]:not(#zen-sidepanel-button), #urlbar[open]))) {
-    #zen-sidebar-top-buttons-customization-target>*:not(#back-button) {
-      opacity: 0 !important;
+    #zen-sidebar-top-buttons-customization-target {
+      >*:not(#back-button) {
+        transition: var(--smooth-transition) !important;
+        opacity: 0 !important;
+      }
+
+      >#back-button {
+        transition: none !important;
+      }
+
+      &:has(> #stop-reload-button > #stop-button:not([disabled])) {
+        >* {
+          transition: none !important;
+        }
+
+        >#stop-reload-button {
+          opacity: 1 !important;
+        }
+
+        >*:not(#stop-reload-button) {
+          opacity: 0 !important;
+        }
+      }
     }
   }
 
