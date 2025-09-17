@@ -191,11 +191,6 @@
     transform: none !important;
   }
 
-  /*Adds dynamic drop shadow to this element that parents tabbrowser-tabbox so the shadow follows the web page with the clip path*/
-  #zen-tabbox-wrapper {
-    filter: drop-shadow(0px 0px 6px rgba(0, 0, 0, 0.5));
-  }
-
   /*initial clip path state*/
   #tabbrowser-tabbox {
     clip-path: inset(-2px -2px -2px -2px round 5px);
