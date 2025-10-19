@@ -25,24 +25,24 @@
 }
 
 :root:not([zen-compact-mode="true"]):not([chromehidden~="toolbar"]):not([inDOMFullscreen="true"]) {
-  --transition-duration: var(--mod-autoexpand-animation-duration);
-  --transition-delay: var(--mod-autoexpand-animation-delay);
-  --transition-delay-after: var(--mod-autoexpand-collapse-delay);
-  --expanded-tab-bar-width: var(--mod-autoexpand-expanded-width);
-  --collapsed-tab-bar-width: var(--mod-autoexpand-collapsed-width);
-  --transition-delay-smooth: var(--transition-delay-after);
-  --transition-delay-fast: calc(var(--transition-duration) + var(--transition-delay-after));
+  --expanded-tab-bar-width: var(--mod-autoexpand-expanded-width, 200px);
+  --collapsed-tab-bar-width: var(--mod-autoexpand-collapsed-width, 45px);
 
-  /*Elements with "Instant" transitions. These are delayed dynamically depending on if it's hover/unhover, and are never animated to improve performance.*/
+  --transition-duration: var(--mod-autoexpand-animation-duration, 150ms);
+  --transition-expand-delay: var(--mod-autoexpand-expand-delay, 750ms);
+  --transition-collapse-delay: var(--mod-autoexpand-collapse-delay, 100ms);
+
+  --transition-delay-smooth: var(--transition-collapse-delay);
+  --transition-delay-fast: calc(var(--transition-duration) + var(--transition-collapse-delay));
+
   #zen-media-controls-toolbar,
   #zen-appcontent-wrapper,
   vbox.zen-workspace-tabs-section.zen-workspace-pinned-tabs-section,
   #nav-bar,
-  tab:not([zen-essential]):not([pinned])[selected="true"] .tab-background,
   .tab-audio-button,
   #zen-media-controls-hbox>*:not(#zen-media-focus-button),
   #zen-media-main-vbox>*:not(#zen-media-controls-hbox),
-  tab:not([zen-essential]) .tab-background,
+  .tab-background,
   #tabs-newtab-button,
   .pinned-tabs-container-separator,
   .zen-current-workspace-indicator-name,
@@ -55,7 +55,6 @@
       z-index 0ms ease var(--transition-delay-fast) !important;
   }
 
-  /*Elements with smooth transitions that are animated*/
   #navigator-toolbox,
   #tabbrowser-tabbox,
   #urlbar:not([open]),
@@ -77,24 +76,23 @@
       max-height var(--transition-duration) ease var(--transition-delay-smooth) !important;
   }
 
-  /*Main code block that defines the expanded state (reverts changes of the collapsed state, and clips the viewport)*/
   #navigator-toolbox {
     clip-path: inset(0 calc(var(--expanded-tab-bar-width) - var(--collapsed-tab-bar-width) - 5px) 0 0);
     position: absolute !important;
     height: 100%;
     min-width: 100px !important;
     width: var(--expanded-tab-bar-width) !important;
-    --hover-width: 100px;
 
-    /*Expanded state. Activates on hover, popup menu, etc*/
-    &:is(:hover, [has-popup-menu=""], [movingtab], [flash-popup]),
-    &:has(toolbarbutton[open="true"]:not(#zen-sidepanel-button), #urlbar[open]) {
-      --transition-delay-smooth: calc(var(--transition-delay) + 0ms);
-      --transition-delay-fast: var(--transition-delay);
+    &:is(:hover, [has-popup-menu], [movingtab], [flash-popup]),
+    &:has(toolbarbutton[open]:not(#zen-sidepanel-button),
+      #urlbar[open],
+      #identity-box [open]) {
+      --transition-delay-smooth: calc(var(--transition-expand-delay) + 0ms);
+      --transition-delay-fast: var(--transition-expand-delay);
 
       ~#zen-appcontent-wrapper {
-        --transition-delay-smooth: calc(var(--transition-delay) + 0ms);
-        --transition-delay-fast: var(--transition-delay);
+        --transition-delay-smooth: calc(var(--transition-expand-delay) + 0ms);
+        --transition-delay-fast: var(--transition-expand-delay);
       }
 
       clip-path: inset(0 0 0 0);
@@ -112,11 +110,11 @@
       }
 
       .tab-label-container {
-        opacity: 100% !important;
+        opacity: 1 !important;
       }
 
       #zen-sidebar-foot-buttons {
-        opacity: 100% !important;
+        opacity: 1 !important;
       }
 
       tab:is([zen-essential], [pinned]) {
@@ -124,7 +122,7 @@
       }
 
       .toolbarbutton-text {
-        opacity: 100% !important;
+        opacity: 1 !important;
       }
 
       #urlbar:not([open]),
@@ -134,7 +132,7 @@
       }
 
       tab:not([zen-essential]) {
-        width: 100%;
+        width: 100% !important;
       }
 
       .pinned-tabs-container-separator {
@@ -146,12 +144,11 @@
 
       tab-group .tabbrowser-tab {
         transform: translateX(0px);
-        --tab-width: calc(100% - 15px);
-        width: var(--tab-width) !important;
+        width: calc(100% - 15px) !important;
       }
 
       .tab-group-label {
-        opacity: 100%;
+        opacity: 1 !important;
       }
     }
 
@@ -170,7 +167,6 @@
     }
   }
 
-  /*Important: Makes so that the webpage display covers the tab bar*/
   #zen-appcontent-wrapper {
     z-index: 1000 !important;
   }
@@ -182,7 +178,7 @@
   }
 
   .tab-reset-pin-button,
-  .tab-reset-pin-button:after {
+  .tab-reset-pin-button::after {
     display: none !important;
   }
 
@@ -191,22 +187,14 @@
     transform: none !important;
   }
 
-  /*Adds dynamic drop shadow to this element that parents tabbrowser-tabbox so the shadow follows the web page with the clip path*/
-  #zen-tabbox-wrapper {
-    filter: drop-shadow(0px 0px 6px rgba(0, 0, 0, 0.5));
-  }
-
-  /*initial clip path state*/
   #tabbrowser-tabbox {
-    clip-path: inset(-2px -2px -2px -2px round 5px);
+    clip-path: inset(-2px -2px -2px -2px round 10px);
   }
 
-  /*Adds space for the tab icons*/
   #navigator-toolbox~#zen-appcontent-wrapper {
     margin-left: var(--collapsed-tab-bar-width);
   }
 
-  /* CENTER FAVICONS on collapsed state */
   tab:not([zen-essential]) {
     .tab-icon-image {
       margin-left: 4px !important;
@@ -238,7 +226,6 @@
     margin-right: 9px !important;
   }
 
-  /*hide splitter*/
   #zen-sidebar-splitter {
     visibility: hidden !important;
   }
@@ -247,7 +234,6 @@
     position: relative !important;
   }
 
-  /*collapses url bar when not hovered*/
   #urlbar:not([open]),
   #urlbar-container,
   #nav-bar-customization-target {
@@ -256,29 +242,27 @@
   }
 
   #urlbar:not([open]) {
+    #identity-box:not(:has([open="true"])) {
+      visibility: hidden !important;
+    }
 
-    #identity-box,
     #page-action-buttons {
       display: none !important;
     }
   }
 
-  /*collapses essentials when not hovered*/
   tab:is([zen-essential]) {
     width: calc(var(--collapsed-tab-bar-width) - 5px) !important;
   }
 
-  /*fades tab text*/
   .tab-label-container {
-    opacity: 0% !important;
+    opacity: 0 !important;
   }
 
-  /*Collapses tab for square backgrounds on hover, during collapsed state*/
   tab:not([zen-essential]) {
-    width: 37px;
+    width: 37px !important;
   }
 
-  /*collapses the thin line separator*/
   .pinned-tabs-container-separator {
     width: calc(var(--collapsed-tab-bar-width) - 6px) !important;
     margin-inline: 0px !important;
@@ -286,13 +270,9 @@
     justify-self: start !important;
   }
 
-  /*Made the arrowscrollbox collapse in the right direction, now it fixes tab sizing*/
   #navigator-toolbox {
     .workspace-arrowscrollbox {
       width: calc(var(--expanded-tab-bar-width) + 0px) !important;
-    }
-
-    .workspace-arrowscrollbox {
       margin-right: auto !important;
     }
   }

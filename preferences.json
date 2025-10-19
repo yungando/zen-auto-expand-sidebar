@@ -18,7 +18,7 @@
     "defaultValue": "150ms"
   },
   {
-    "property": "mod.autoexpand.animation-delay",
+    "property": "mod.autoexpand.expand-delay",
     "label": "Hover delay before sidebar expands. (Default: 750ms)",
     "type": "string",
     "defaultValue": "750ms"
