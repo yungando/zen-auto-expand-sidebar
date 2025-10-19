@@ -82,7 +82,8 @@
         clip-path: inset(-2px -2px -2px calc(var(--expanded-width) - var(--collapsed-width)) round 10px);
       }
 
-      tab:not([zen-essential]) .tab-background {
+      tab,
+      .tab-background {
         width: 100% !important;
       }
 
@@ -92,10 +93,6 @@
 
       #zen-sidebar-foot-buttons {
         opacity: 1 !important;
-      }
-
-      tab:is([zen-essential], [pinned]) {
-        width: 100% !important;
       }
 
       .toolbarbutton-text {
@@ -108,24 +105,11 @@
         width: calc(var(--expanded-width) - 8px) !important;
       }
 
-      tab:not([zen-essential]) {
-        width: 100% !important;
-      }
-
       .pinned-tabs-container-separator {
         width: inherit !important;
         margin-inline: inherit !important;
         display: block !important;
         justify-self: inherit !important;
-      }
-
-      tab-group .tabbrowser-tab {
-        transform: translateX(0px);
-        width: calc(100% - 15px) !important;
-      }
-
-      .tab-group-label {
-        opacity: 1 !important;
       }
     }
   }
@@ -155,7 +139,7 @@
     display: none !important;
   }
 
-  .tabbrowser-tab.tabbrowser-tab[zen-pinned-changed][pinned] .tab-icon-stack.tab-icon-stack {
+  .tab-icon-stack {
     position: static !important;
     transform: none !important;
   }
@@ -168,15 +152,13 @@
     margin-left: var(--collapsed-width);
   }
 
-  tab:not([zen-essential]) {
-    .tab-icon-image {
-      margin-left: 4px !important;
-      margin-right: 4px !important;
-    }
+  .tab-icon-image {
+    margin-left: 4px !important;
+    margin-right: 9px !important;
+  }
 
-    .tab-background {
-      width: 36px !important;
-    }
+  .tab-background {
+    width: 36px !important;
   }
 
   @media (-moz-platform: macos) {
@@ -193,10 +175,6 @@
     .zen-workspace-pinned-tabs-section {
       padding-left: calc((var(--collapsed-width) - 36px)/2) !important;
     }
-  }
-
-  tab:not([zen-essential]) .tab-icon-image {
-    margin-right: 9px !important;
   }
 
   #zen-sidebar-splitter {
@@ -224,15 +202,11 @@
     }
   }
 
-  tab:is([zen-essential]) {
-    width: calc(var(--collapsed-width) - 5px) !important;
-  }
-
   .tab-label-container {
     opacity: 0 !important;
   }
 
-  tab:not([zen-essential]) {
+  tab {
     width: 37px !important;
   }
 
