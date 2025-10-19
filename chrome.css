@@ -25,8 +25,8 @@
 }
 
 :root:not([zen-compact-mode="true"]):not([chromehidden~="toolbar"]):not([inDOMFullscreen="true"]) {
-  --expanded-tab-bar-width: var(--mod-autoexpand-expanded-width, 200px);
-  --collapsed-tab-bar-width: var(--mod-autoexpand-collapsed-width, 45px);
+  --expanded-width: var(--mod-autoexpand-expanded-width, 200px);
+  --collapsed-width: var(--mod-autoexpand-collapsed-width, 45px);
 
   --transition-duration: var(--mod-autoexpand-animation-duration, 150ms);
   --transition-expand-delay: var(--mod-autoexpand-expand-delay, 750ms);
@@ -35,24 +35,12 @@
   --transition-delay-smooth: var(--transition-collapse-delay);
   --transition-delay-fast: calc(var(--transition-duration) + var(--transition-collapse-delay));
 
-  #zen-media-controls-toolbar,
   #zen-appcontent-wrapper,
-  vbox.zen-workspace-tabs-section.zen-workspace-pinned-tabs-section,
-  #nav-bar,
-  .tab-audio-button,
-  #zen-media-controls-hbox>*:not(#zen-media-focus-button),
-  #zen-media-main-vbox>*:not(#zen-media-controls-hbox),
-  .tab-background,
-  #tabs-newtab-button,
-  .pinned-tabs-container-separator,
-  .zen-current-workspace-indicator-name,
-  .tab-group-label {
+  #nav-bar {
     transition: clip-path 0ms ease-in-out var(--transition-delay-fast),
       transform 0ms ease-in-out var(--transition-delay-fast),
       opacity 0ms ease-in-out var(--transition-delay-fast),
-      width 0ms ease-in-out var(--transition-delay-fast),
-      max-height 0ms ease var(--transition-delay-fast),
-      z-index 0ms ease var(--transition-delay-fast) !important;
+      width 0ms ease-in-out var(--transition-delay-fast) !important;
   }
 
   #navigator-toolbox,
@@ -61,48 +49,37 @@
   #urlbar-container,
   #nav-bar-customization-target,
   #identity-box,
-  tab:is([zen-essential]),
-  #zen-workspaces-button,
-  #zen-workspaces-button .subviewbutton,
-  #tabs-newtab-button .toolbarbutton-text,
-  #zen-media-focus-button::after,
-  tab:not([zen-essential]),
+  tab,
   .tab-label-container,
-  #zen-sidebar-foot-buttons>*:not(#zen-workspaces-button) {
+  #zen-sidebar-foot-buttons>*:not(#zen-workspaces-button),
+  .tab-background,
+  .pinned-tabs-container-separator {
     transition: clip-path var(--transition-duration) ease-in-out var(--transition-delay-smooth),
       transform var(--transition-duration) ease-in-out var(--transition-delay-smooth),
       opacity var(--transition-duration) ease-in-out var(--transition-delay-smooth),
-      width var(--transition-duration) ease-in-out var(--transition-delay-smooth),
-      max-height var(--transition-duration) ease var(--transition-delay-smooth) !important;
+      width var(--transition-duration) ease-in-out var(--transition-delay-smooth) !important;
   }
 
   #navigator-toolbox {
-    clip-path: inset(0 calc(var(--expanded-tab-bar-width) - var(--collapsed-tab-bar-width) - 5px) 0 0);
+    clip-path: inset(0 calc(var(--expanded-width) - var(--collapsed-width) - 5px) 0 0);
     position: absolute !important;
-    height: 100%;
-    min-width: 100px !important;
-    width: var(--expanded-tab-bar-width) !important;
+    height: 100% !important;
+    width: var(--expanded-width) !important;
 
     &:is(:hover, [has-popup-menu], [movingtab], [flash-popup]),
-    &:has(toolbarbutton[open]:not(#zen-sidepanel-button),
-      #urlbar[open],
-      #identity-box [open]) {
-      --transition-delay-smooth: calc(var(--transition-expand-delay) + 0ms);
+    &:has(toolbarbutton[open]:not(#zen-sidepanel-button), #urlbar[open], #identity-box [open]) {
+      --transition-delay-smooth: var(--transition-expand-delay);
       --transition-delay-fast: var(--transition-expand-delay);
 
       ~#zen-appcontent-wrapper {
-        --transition-delay-smooth: calc(var(--transition-expand-delay) + 0ms);
+        --transition-delay-smooth: var(--transition-expand-delay);
         --transition-delay-fast: var(--transition-expand-delay);
       }
 
       clip-path: inset(0 0 0 0);
 
-      ~#zen-appcontent-wrapper {
-        z-index: 0 !important;
-      }
-
       ~#zen-appcontent-wrapper #tabbrowser-tabbox {
-        clip-path: inset(-2px -2px -2px calc(var(--expanded-tab-bar-width) - var(--collapsed-tab-bar-width)) round 10px);
+        clip-path: inset(-2px -2px -2px calc(var(--expanded-width) - var(--collapsed-width)) round 10px);
       }
 
       tab:not([zen-essential]) .tab-background {
@@ -128,7 +105,7 @@
       #urlbar:not([open]),
       #urlbar-container,
       #nav-bar-customization-target {
-        width: calc(var(--expanded-tab-bar-width) - 8px) !important;
+        width: calc(var(--expanded-width) - 8px) !important;
       }
 
       tab:not([zen-essential]) {
@@ -151,30 +128,26 @@
         opacity: 1 !important;
       }
     }
-
-    #zen-sidebar-foot-buttons>#customizationui-widget-panel {
-      transition: none !important;
-      transform: none !important;
-      clip-path: none !important;
-    }
   }
 
   #zen-sidebar-top-buttons-customization-target {
-    margin-left: calc(var(--collapsed-tab-bar-width)/2 - 17px) !important;
+    margin-left: calc(var(--collapsed-width)/2 - 17px) !important;
 
     #stop-reload-button:has(> #stop-button:not([disabled])) {
       order: -4 !important;
     }
   }
 
-  #zen-appcontent-wrapper {
-    z-index: 1000 !important;
-  }
-
   #zen-sidebar-foot-buttons {
     padding-left: 3px !important;
     padding-right: 3px !important;
     margin-bottom: 4px !important;
+
+    #customizationui-widget-panel {
+      transition: none !important;
+      transform: none !important;
+      clip-path: none !important;
+    }
   }
 
   .tab-reset-pin-button,
@@ -191,8 +164,8 @@
     clip-path: inset(-2px -2px -2px -2px round 10px);
   }
 
-  #navigator-toolbox~#zen-appcontent-wrapper {
-    margin-left: var(--collapsed-tab-bar-width);
+  #zen-appcontent-wrapper {
+    margin-left: var(--collapsed-width);
   }
 
   tab:not([zen-essential]) {
@@ -210,7 +183,7 @@
 
     .zen-workspace-normal-tabs-section,
     .zen-workspace-pinned-tabs-section {
-      padding-left: calc((var(--collapsed-tab-bar-width) - 34px)/2) !important;
+      padding-left: calc((var(--collapsed-width) - 34px)/2) !important;
     }
   }
 
@@ -218,7 +191,7 @@
 
     .zen-workspace-normal-tabs-section,
     .zen-workspace-pinned-tabs-section {
-      padding-left: calc((var(--collapsed-tab-bar-width) - 36px)/2) !important;
+      padding-left: calc((var(--collapsed-width) - 36px)/2) !important;
     }
   }
 
@@ -237,12 +210,12 @@
   #urlbar:not([open]),
   #urlbar-container,
   #nav-bar-customization-target {
-    width: calc(var(--collapsed-tab-bar-width) - 7px) !important;
+    width: calc(var(--collapsed-width) - 7px) !important;
     overflow: hidden !important;
   }
 
   #urlbar:not([open]) {
-    #identity-box:not(:has([open="true"])) {
+    #identity-box:not(:has([open])) {
       visibility: hidden !important;
     }
 
@@ -252,7 +225,7 @@
   }
 
   tab:is([zen-essential]) {
-    width: calc(var(--collapsed-tab-bar-width) - 5px) !important;
+    width: calc(var(--collapsed-width) - 5px) !important;
   }
 
   .tab-label-container {
@@ -264,16 +237,14 @@
   }
 
   .pinned-tabs-container-separator {
-    width: calc(var(--collapsed-tab-bar-width) - 6px) !important;
+    width: calc(var(--collapsed-width) - 6px) !important;
     margin-inline: 0px !important;
     display: flex !important;
     justify-self: start !important;
   }
 
-  #navigator-toolbox {
-    .workspace-arrowscrollbox {
-      width: calc(var(--expanded-tab-bar-width) + 0px) !important;
-      margin-right: auto !important;
-    }
+  .workspace-arrowscrollbox {
+    width: var(--expanded-width) !important;
+    margin-right: auto !important;
   }
 }
