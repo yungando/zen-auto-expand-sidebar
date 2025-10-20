@@ -119,6 +119,11 @@
         transform: translateX(-38px);
       }
 
+      #identity-box {
+        transform: translateX(0px);
+        opacity: 1;
+      }
+
       #urlbar-input {
         transform: translateX(0);
         opacity: 1;
@@ -238,13 +243,10 @@
       transform: translateX(0);
     }
 
-    #urlbar-input {
+    #urlbar-input,
+    #identity-box:not(:has([open])) {
       transform: translateX(38px);
       opacity: 0;
-    }
-
-    #identity-box:not(:has([open])) {
-      visibility: hidden !important;
     }
 
     #page-action-buttons {
