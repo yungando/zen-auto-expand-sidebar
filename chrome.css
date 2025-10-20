@@ -46,6 +46,8 @@
   #navigator-toolbox,
   #tabbrowser-tabbox,
   #urlbar:not([open]),
+  #urlbar::before,
+  #urlbar-input,
   #urlbar-container,
   #nav-bar-customization-target,
   #identity-box,
@@ -110,6 +112,16 @@
         margin-inline: inherit !important;
         display: block !important;
         justify-self: inherit !important;
+      }
+
+      #urlbar::before {
+        opacity: 0;
+        transform: translateX(-38px);
+      }
+
+      #urlbar-input {
+        transform: translateX(0);
+        opacity: 1;
       }
     }
   }
@@ -186,6 +198,17 @@
   }
 
   #urlbar:not([open]),
+  #urlbar-container {
+    height: 37px !important;
+    min-height: 37px !important;
+    max-height: 37px !important;
+    line-height: 37px !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    box-sizing: border-box !important;
+  }
+
+  #urlbar:not([open]),
   #urlbar-container,
   #nav-bar-customization-target {
     width: calc(var(--collapsed-width) - 7px) !important;
@@ -193,6 +216,33 @@
   }
 
   #urlbar:not([open]) {
+    position: relative !important;
+    display: flex !important;
+    align-items: center !important;
+
+    &::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 38px;
+      height: 100%;
+      pointer-events: none;
+      background-image: url("chrome://global/skin/icons/search-glass.svg");
+      background-repeat: no-repeat;
+      background-size: 16px 16px;
+      background-position: center;
+      -moz-context-properties: fill, stroke;
+      fill: currentColor;
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    #urlbar-input {
+      transform: translateX(38px);
+      opacity: 0;
+    }
+
     #identity-box:not(:has([open])) {
       visibility: hidden !important;
     }
