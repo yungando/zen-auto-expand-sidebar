@@ -44,11 +44,8 @@
 
   #navigator-toolbox,
   #tabbrowser-tabbox,
-  #urlbar:not([open]),
   #urlbar::before,
   #urlbar-input,
-  #urlbar-container,
-  #nav-bar-customization-target,
   #identity-box,
   tab,
   .tab-label-container,
@@ -63,22 +60,14 @@
 
   &:has(#navigator-toolbox:hover) {
     --transition-delay: var(--transition-expand-delay);
-  }
 
-  &:has(#navigator-toolbox:not(:hover)) {
-    --transition-delay: var(--transition-collapse-delay);
-  }
-
-  &:has(#navigator-toolbox #urlbar[open]) {
-    --transition-delay: 0ms;
-
-    #urlbar[open],
-    #urlbar::before,
-    #urlbar-input,
+    #urlbar,
     #urlbar-container,
-    #nav-bar-customization-target,
-    #identity-box {
-      transition: none !important;
+    #nav-bar-customization-target {
+      transition: clip-path var(--transition-duration) ease-in-out var(--transition-delay),
+        transform var(--transition-duration) ease-in-out var(--transition-delay),
+        opacity var(--transition-duration) ease-in-out var(--transition-delay),
+        width var(--transition-duration) ease-in-out var(--transition-delay) !important;
     }
   }
 
@@ -112,10 +101,7 @@
       }
 
       .pinned-tabs-container-separator {
-        width: inherit !important;
-        margin-inline: inherit !important;
-        display: block !important;
-        justify-self: inherit !important;
+        width: calc(var(--expanded-width) - 6px) !important;
       }
 
       #urlbar::before {
@@ -153,7 +139,8 @@
   }
 
   .tab-reset-pin-button,
-  .tab-reset-pin-button::after {
+  .tab-reset-pin-button::after,
+  .zen-workspace-close-unpinned-tabs-button {
     display: none !important;
   }
 
@@ -266,9 +253,6 @@
 
   .pinned-tabs-container-separator {
     width: calc(var(--collapsed-width) - 6px) !important;
-    margin-inline: 0px !important;
-    display: flex !important;
-    justify-self: start !important;
   }
 
   .workspace-arrowscrollbox {
