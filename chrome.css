@@ -26,11 +26,13 @@
 
 :root:not([zen-compact-mode="true"]):not([chromehidden~="toolbar"]):not([inDOMFullscreen="true"]) {
   --expanded-width: var(--mod-autoexpand-expanded-width, 200px);
-  --collapsed-width: var(--mod-autoexpand-collapsed-width, 45px);
+  --collapsed-width: var(--mod-autoexpand-collapsed-width, 50px);
 
   --transition-duration: var(--mod-autoexpand-animation-duration, 150ms);
   --transition-expand-delay: var(--mod-autoexpand-expand-delay, 750ms);
   --transition-collapse-delay: var(--mod-autoexpand-collapse-delay, 100ms);
+
+  --current-width: var(--collapsed-width);
 
   --transition-delay: 0ms;
 
@@ -72,36 +74,23 @@
   }
 
   #navigator-toolbox {
-    clip-path: inset(0 calc(var(--expanded-width) - var(--collapsed-width) - 5px) 0 0);
+    clip-path: inset(0 calc(var(--expanded-width) - var(--collapsed-width)) 0 0);
     position: absolute !important;
     height: 100% !important;
     width: var(--expanded-width) !important;
 
-    &:is(:hover, [has-popup-menu], [movingtab], [flash-popup]),
+    &:is([zen-has-hover], [has-popup-menu], [movingtab], [flash-popup]),
     &:has(toolbarbutton[open]:not(#zen-sidepanel-button), #urlbar[open], #identity-box [open]) {
+      --current-width: var(--expanded-width);
+
       clip-path: inset(0 0 0 0);
 
       ~#zen-appcontent-wrapper #tabbrowser-tabbox {
         clip-path: inset(-2px -2px -2px calc(var(--expanded-width) - var(--collapsed-width)) round 10px);
       }
 
-      tab,
-      .tab-background {
-        width: 100% !important;
-      }
-
       .tab-label-container {
         opacity: 1 !important;
-      }
-
-      #urlbar:not([open]),
-      #urlbar-container,
-      #nav-bar-customization-target {
-        width: calc(var(--expanded-width) - 8px) !important;
-      }
-
-      .pinned-tabs-container-separator {
-        width: calc(var(--expanded-width) - 6px) !important;
       }
 
       #urlbar::before {
@@ -119,7 +108,7 @@
   }
 
   #zen-sidebar-top-buttons-customization-target {
-    margin-left: calc(var(--collapsed-width)/2 - 17px) !important;
+    margin-left: calc(var(--collapsed-width)/2 - 19px) !important;
 
     #stop-reload-button:has(> #stop-button:not([disabled])) {
       order: -4 !important;
@@ -162,32 +151,13 @@
     margin-right: 9px !important;
   }
 
-  .tab-background {
-    width: 36px !important;
-  }
-
-  @media (-moz-platform: macos) {
-
-    .zen-workspace-normal-tabs-section,
-    .zen-workspace-pinned-tabs-section {
-      padding-left: calc((var(--collapsed-width) - 34px)/2) !important;
-    }
-  }
-
-  @media not (-moz-platform: macos) {
-
-    .zen-workspace-normal-tabs-section,
-    .zen-workspace-pinned-tabs-section {
-      padding-left: calc((var(--collapsed-width) - 36px)/2) !important;
-    }
-  }
-
   #zen-sidebar-splitter {
-    visibility: hidden !important;
+    display: none !important;
   }
 
   #nav-bar {
     position: relative !important;
+    margin-bottom: 1px !important;
   }
 
   #urlbar:not([open]),
@@ -204,7 +174,7 @@
   #urlbar:not([open]),
   #urlbar-container,
   #nav-bar-customization-target {
-    width: calc(var(--collapsed-width) - 7px) !important;
+    width: calc(var(--current-width) - 12px) !important;
     overflow: hidden !important;
   }
 
@@ -247,12 +217,13 @@
     opacity: 0 !important;
   }
 
-  tab {
-    width: 37px !important;
+  tab,
+  .tab-background {
+    width: calc(var(--current-width) - 14px) !important;
   }
 
   .pinned-tabs-container-separator {
-    width: calc(var(--collapsed-width) - 6px) !important;
+    width: calc(var(--current-width) - 10px) !important;
   }
 
   .workspace-arrowscrollbox {
