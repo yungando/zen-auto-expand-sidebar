@@ -13,20 +13,20 @@
   },
   {
     "property": "mod.autoexpand.animation-duration",
-    "label": "Siderbar expanding animation duration. (Default: 150ms)",
+    "label": "Sidebar expanding animation duration. (Default: 150ms)",
     "type": "string",
     "defaultValue": "150ms"
   },
   {
     "property": "mod.autoexpand.expand-delay",
-    "label": "Hover delay before sidebar expands. (Default: 750ms)",
+    "label": "Hover delay before sidebar expands. (Default: 700ms)",
     "type": "string",
-    "defaultValue": "750ms"
+    "defaultValue": "700ms"
   },
   {
     "property": "mod.autoexpand.collapse-delay",
-    "label": "Delay before sidebar collapses. (Default: 100ms)",
+    "label": "Delay before sidebar collapses. (Default: 200ms)",
     "type": "string",
-    "defaultValue": "100ms"
+    "defaultValue": "200ms"
   }
 ]
