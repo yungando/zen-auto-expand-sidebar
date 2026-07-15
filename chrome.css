@@ -20,6 +20,12 @@
   }
 }
 
+@media (-moz-platform: macos) {
+  #PanelUI-button {
+    display: none !important;
+  }
+}
+
 :root:not([zen-compact-mode="true"]):not([chromehidden~="toolbar"]):not([inDOMFullscreen="true"]) {
   --autoexpand-expanded-width: var(--mod-autoexpand-expanded-width, 200px);
   --autoexpand-collapsed-width: var(--mod-autoexpand-collapsed-width, 45px);
